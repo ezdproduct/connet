@@ -23,6 +23,7 @@ import { ImageWithFallback } from '../../components/ImageWithFallback';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
+import { ROLES_CONFIG } from '@/config/roles';
 
 const LandingPage = () => {
     // Kích hoạt hook để tạo hiệu ứng hoạt ảnh khi cuộn trang
@@ -57,9 +58,17 @@ const LandingPage = () => {
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        // 1. Điều hướng người dùng vào trang chính của ứng dụng
-        navigate('/app/home');
-        // 2. Hiển thị thông báo chào mừng
+        // 1. Xác định vai trò và đường dẫn đích
+        const roleKeyMap: { [key: string]: keyof typeof ROLES_CONFIG } = {
+            'Cộng đồng': 'consumer',
+            'Nhà Sáng tạo': 'creator',
+            'Nhà Đầu tư': 'investor',
+        };
+        const roleKey = roleKeyMap[selectedRole] || 'consumer';
+        const targetPath = ROLES_CONFIG[roleKey].nav[0].path;
+
+        // 2. Điều hướng người dùng đến trang quản trị của vai trò đã chọn
+        navigate(targetPath);
         toast({ title: "Đăng ký thành công!", description: "Chào mừng bạn đến với CÒN NÉT GEN." });
 
         // 3. Chuẩn bị dữ liệu và danh sách webhook
@@ -74,7 +83,7 @@ const LandingPage = () => {
             'https://n8n.probase.tech/webhook-test/lead'
         ];
 
-        // 4. Gửi yêu cầu đến từng webhook trong danh sách
+        // 4. Gửi yêu cầu đến từng webhook trong danh sách ở chế độ nền
         webhookUrls.forEach(url => {
             fetch(url, {
                 method: 'POST',
