@@ -25,43 +25,56 @@ import { cn } from '@/lib/utils';
 import { useToast } from '@/components/ui/use-toast';
 
 const LandingPage = () => {
+    // Kích hoạt hook để tạo hiệu ứng hoạt ảnh khi cuộn trang
     useScrollAnimation();
     const navigate = useNavigate();
+
+    // State quản lý việc hiển thị menu trên di động
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // State quản lý modal nào đang được hiển thị (ví dụ: 'register', 'reshare')
     const [activeModal, setActiveModal] = useState<string | null>(null);
 
-    // State for the registration modal form
+    // State cho form đăng ký trong modal
     const [selectedRole, setSelectedRole] = useState('Cộng đồng');
     const [phone, setPhone] = useState('');
     const { toast } = useToast();
 
+    // Effect để ngăn cuộn trang khi menu hoặc modal đang mở
     useEffect(() => {
         document.body.style.overflow = isMenuOpen || activeModal ? 'hidden' : 'auto';
     }, [isMenuOpen, activeModal]);
 
+    // Hàm để bật/tắt modal
     const handleToggleModal = (modalId: string) => {
         setActiveModal(prev => (prev === modalId ? null : modalId));
     };
 
+    /**
+     * Xử lý việc gửi form đăng ký.
+     * Chuyển hướng người dùng vào app ngay lập tức để có trải nghiệm mượt mà.
+     * Việc gửi dữ liệu đến webhook được thực hiện ngầm ở chế độ nền.
+     */
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
+        // 1. Điều hướng người dùng vào trang chính của ứng dụng
         navigate('/app/home');
+        // 2. Hiển thị thông báo chào mừng
         toast({ title: "Đăng ký thành công!", description: "Chào mừng bạn đến với CÒN NÉT GEN." });
 
+        // 3. Chuẩn bị dữ liệu và danh sách webhook
         const roleValueMap: { [key: string]: string } = {
           'Cộng đồng': 'congdong',
           'Nhà Sáng tạo': 'nhasangtao',
           'Nhà Đầu tư': 'nhadautu',
         };
-        
         const data = { phone, role: roleValueMap[selectedRole] || 'khac' };
-
         const webhookUrls = [
             'https://n8n.probase.tech/webhook/lead',
             'https://n8n.probase.tech/webhook-test/lead'
         ];
 
+        // 4. Gửi yêu cầu đến từng webhook trong danh sách
         webhookUrls.forEach(url => {
             fetch(url, {
                 method: 'POST',
@@ -102,7 +115,7 @@ const LandingPage = () => {
 
             <Footer />
             
-            {/* Registration Modal */}
+            {/* Modal Đăng ký */}
             <Modal id="register-modal" isOpen={activeModal === 'register'} onClose={() => handleToggleModal('register')}>
                 <div className="p-8">
                     <h3 className="text-2xl font-barlow font-bold text-[var(--color-primary)] text-center">THAM GIA CÙNG CÒN NÉT GEN</h3>
@@ -121,7 +134,7 @@ const LandingPage = () => {
                 </div>
             </Modal>
 
-            {/* Other Modals */}
+            {/* Các Modals khác */}
             <Modal id="reshare-modal" isOpen={activeModal === 'reshare'} onClose={() => handleToggleModal('reshare')}>
                 <div className="p-6">
                     <h2 className="text-4xl font-barlow font-bold text-[var(--color-primary)] text-center">Reshare</h2>

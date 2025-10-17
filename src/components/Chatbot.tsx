@@ -2,34 +2,45 @@ import React, { useState, useRef, useEffect } from "react";
 import { Icons } from "./Icons";
 import { Link } from "react-router-dom";
 
+// Định nghĩa kiểu dữ liệu cho một tin nhắn
 interface Message {
   role: "user" | "assistant";
   content: string | React.ReactNode;
 }
 
 export const Chatbot = () => {
+  // State quản lý việc chatbot có đang mở hay không
   const [isOpen, setIsOpen] = useState(false);
+  // State lưu trữ danh sách các tin nhắn
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: "Xin chào! Tôi có thể giúp gì cho bạn?" },
   ]);
+  // State cho ô nhập liệu của người dùng
   const [input, setInput] = useState("");
+  // State để vô hiệu hóa nút gửi khi đang chờ phản hồi
   const [isSending, setIsSending] = useState(false);
+  // Ref để tự động cuộn xuống tin nhắn mới nhất
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Hàm để cuộn xuống cuối cuộc trò chuyện
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Tự động cuộn khi có tin nhắn mới
   useEffect(scrollToBottom, [messages]);
 
+  // Hàm gửi tin nhắn
   const sendMessage = async () => {
     if (!input.trim() || isSending) return;
     setIsSending(true);
 
+    // Thêm tin nhắn của người dùng vào danh sách
     const userMsg: Message = { role: "user", content: input };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
 
+    // Gọi API webhook của n8n để xử lý tin nhắn
     const webhookUrl = "https://n8n.probase.tech/webhook/chat-co";
 
     try {
@@ -43,19 +54,20 @@ export const Chatbot = () => {
 
       const data = await res.json();
 
-      // 🔍 Kiểm tra xem data là mảng hay object
+      // Xử lý các định dạng phản hồi khác nhau từ webhook
       if (Array.isArray(data)) {
-        // Trường hợp trả về nhiều tin nhắn
+        // Nếu webhook trả về một mảng tin nhắn
         data.forEach((item) => {
           const text = item.text || item.reply || JSON.stringify(item);
           const botMsg: Message = { role: "assistant", content: text };
           setMessages((prev) => [...prev, botMsg]);
         });
       } else if (data.reply) {
-        // Trường hợp chỉ 1 tin nhắn
+        // Nếu webhook trả về một tin nhắn duy nhất
         const botMsg: Message = { role: "assistant", content: data.reply };
         setMessages((prev) => [...prev, botMsg]);
       } else {
+        // Trường hợp không nhận dạng được phản hồi
         const botMsg: Message = {
           role: "assistant",
           content: "Tôi chưa hiểu ý bạn. Bạn có thể nói rõ hơn không?",
@@ -63,6 +75,7 @@ export const Chatbot = () => {
         setMessages((prev) => [...prev, botMsg]);
       }
     } catch (error) {
+      // Xử lý lỗi khi gọi API
       console.error("Failed to send message:", error);
       const errorMsg: Message = {
         role: "assistant",
@@ -84,12 +97,14 @@ export const Chatbot = () => {
       };
       setMessages((prev) => [...prev, errorMsg]);
     } finally {
+      // Bật lại nút gửi sau khi hoàn tất
       setIsSending(false);
     }
   };
 
   return (
     <>
+      {/* Nút mở chatbot */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 right-6 bg-[var(--color-primary)] text-white p-4 rounded-full shadow-lg hover:bg-[var(--color-primary-hover)] transition-transform hover:scale-110 z-50"
@@ -98,6 +113,7 @@ export const Chatbot = () => {
         <Icons.Chat />
       </button>
 
+      {/* Cửa sổ chatbot */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-full max-w-sm h-[60vh] bg-white rounded-lg shadow-2xl flex flex-col z-50">
           <header className="bg-[var(--color-primary)] text-white p-4 flex justify-between items-center rounded-t-lg">
@@ -130,6 +146,7 @@ export const Chatbot = () => {
                         : "bg-gray-200 text-gray-800 rounded-bl-none"
                     }`}
                   >
+                    {/* Xử lý hiển thị nội dung tin nhắn, hỗ trợ xuống dòng */}
                     {typeof m.content === "string"
                       ? m.content.split("\n").map((line, idx) => (
                           <p key={idx} className="whitespace-pre-line">
@@ -140,6 +157,7 @@ export const Chatbot = () => {
                   </div>
                 </div>
               ))}
+              {/* Phần tử trống để cuộn tới */}
               <div ref={messagesEndRef} />
             </div>
           </div>
