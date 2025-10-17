@@ -23,7 +23,7 @@ const posts = [
         },
         timestamp: '5 giờ trước',
         content: 'Vừa hoàn thành xong một chiếc ví từ vải dù cũ. Tái chế không chỉ là xu hướng, mà là một hành động có ý nghĩa! 💚 #taiche #connetgen',
-        imageUrl: 'https://images.unsplash.com/photo-1621397640536-94c39a40ed17?q=80&w=800&auto=format&fit=crop',
+        imageUrl: '/recycled-wallet.jpeg',
         likes: 78,
         comments: 23,
     },
