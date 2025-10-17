@@ -1,0 +1,7 @@
+import React from 'react';
+
+const CreatorProducts = () => (
+    <div><div className="flex justify-between items-center mb-6"><h3 className="text-2xl font-bold">Quản lý Sản phẩm</h3><button className="bg-orange-500 text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-orange-600 transition">+ Thêm sản phẩm mới</button></div><div className="bg-white rounded-xl border shadow-sm p-4"><table className="w-full text-sm text-left"><thead className="text-xs text-gray-500 uppercase bg-gray-50"><tr><th className="px-6 py-3">Sản phẩm</th><th className="px-6 py-3">Tồn kho</th><th className="px-6 py-3">Giá bán</th><th className="px-6 py-3">Trạng thái</th><th className="px-6 py-3"></th></tr></thead><tbody><tr className="border-b"><td className="px-6 py-4 font-semibold">Túi Tote Jeans</td><td className="px-6 py-4">12</td><td className="px-6 py-4">450.000đ</td><td className="px-6 py-4 text-green-600 font-semibold">Đang bán</td><td className="px-6 py-4"><a href="#" className="text-blue-600 hover:underline">Sửa</a></td></tr><tr className="border-b"><td className="px-6 py-4 font-semibold">Ví Vải Dù</td><td className="px-6 py-4">0</td><td className="px-6 py-4">250.000đ</td><td className="px-6 py-4 text-red-600 font-semibold">Hết hàng</td><td className="px-6 py-4"><a href="#" className="text-blue-600 hover:underline">Sửa</a></td></tr></tbody></table></div></div>
+);
+
+export default CreatorProducts;
