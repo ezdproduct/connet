@@ -11,6 +11,7 @@ import NotFound from "@/pages/NotFound";
 
 // App layout and pages
 import AppLayout from "@/pages/app/Layout.tsx";
+import HomePage from "@/pages/app/HomePage.tsx";
 import InvestorDashboard from "@/pages/app/investor/Dashboard.tsx";
 import InvestorMarket from "@/pages/app/investor/Market.tsx";
 import InvestorWallet from "@/pages/app/investor/Wallet.tsx";
@@ -37,7 +38,8 @@ const App = () => (
           {/* App Routes (Protected) */}
           <Route path="/app" element={<AppLayout />}>
             {/* Default route for /app */}
-            <Route index element={<Navigate to="/app/investor/dashboard" replace />} />
+            <Route index element={<Navigate to="/app/home" replace />} />
+            <Route path="home" element={<HomePage />} />
 
             {/* Investor Routes */}
             <Route path="investor/dashboard" element={<InvestorDashboard />} />
