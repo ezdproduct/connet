@@ -45,31 +45,32 @@ const LandingPage = () => {
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Điều hướng người dùng vào trong ngay lập tức và hiển thị thông báo chào mừng
+        navigate('/app/home');
+        toast({ title: "Đăng ký thành công!", description: "Chào mừng bạn đến với CÒN NÉT GEN." });
+
         const roleValueMap: { [key: string]: string } = {
           'Cộng đồng': 'congdong',
           'Nhà Sáng tạo': 'nhasangtao',
           'Nhà Đầu tư': 'nhadautu',
         };
         
-        // Sending data as a single JSON object
         const data = { phone, role: roleValueMap[selectedRole] || 'khac' };
 
+        // Gửi webhook trong nền mà không chặn người dùng
         try {
             const response = await fetch('https://n8n.probase.tech/webhook/lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
-            if (response.ok) {
-                toast({ title: "Đăng ký thành công!", description: "Chào mừng bạn đến với CÒN NÉT GEN." });
-                // Navigate to the default app route after successful registration/login
-                navigate('/app/home');
-            } else {
-                throw new Error('Network response was not ok');
+            if (!response.ok) {
+                // Nếu thất bại, chỉ ghi log lỗi. Người dùng đã ở trong app.
+                console.error('Webhook failed:', response.statusText);
             }
         } catch (error) {
             console.error('Failed to submit form:', error);
-            toast({ title: "Có lỗi xảy ra!", description: "Không thể gửi thông tin. Vui lòng thử lại sau.", variant: "destructive" });
         }
     };
 
