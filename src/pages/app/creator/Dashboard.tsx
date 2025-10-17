@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus } from 'lucide-react';
 
 const CreatorDashboard = () => {
@@ -11,67 +10,77 @@ const CreatorDashboard = () => {
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-3xl font-bold">Bảng điều khiển</h2>
+                <h2 className="text-3xl font-bold">Chào mừng trở lại!</h2>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:gap-6 mb-6">
+            {/* Quick Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <Card>
-                    <CardContent className="p-4">
-                        <p className="text-sm text-gray-500">Tổng Doanh thu</p>
-                        <p className="text-2xl font-bold text-orange-600">1.250.000 đ</p>
+                    <CardHeader>
+                        <CardTitle className="text-base font-medium text-gray-500">Tổng Doanh thu</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-3xl font-bold text-orange-600">1.250.000 đ</p>
                     </CardContent>
                 </Card>
                 <Card>
-                    <CardContent className="p-4">
-                        <p className="text-sm text-gray-500">Sản phẩm đã bán</p>
-                        <p className="text-2xl font-bold">5</p>
+                    <CardHeader>
+                        <CardTitle className="text-base font-medium text-gray-500">Dự án Đang hoạt động</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-3xl font-bold">2</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="text-base font-medium text-gray-500">Sản phẩm Đang bán</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-3xl font-bold">1</p>
                     </CardContent>
                 </Card>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:gap-6 mb-8">
-                <Button onClick={() => navigate('/app/creator/add-product')} className="bg-orange-100 text-orange-600 hover:bg-orange-200 font-semibold w-full">
-                    <Plus className="w-4 h-4 mr-2" /> Thêm Sản phẩm
-                </Button>
-                <Button onClick={() => navigate('/app/creator/create-project')} className="bg-blue-100 text-blue-600 hover:bg-blue-200 font-semibold w-full">
-                    <Plus className="w-4 h-4 mr-2" /> Tạo Dự án
-                </Button>
+            {/* Quick Actions */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <Card className="hover:shadow-lg transition-shadow">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                        <CardTitle>Tạo Dự án Mới</CardTitle>
+                        <Button size="icon" variant="ghost" onClick={() => navigate('/app/creator/create-project')}><Plus className="w-5 h-5" /></Button>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-sm text-gray-600">Kêu gọi vốn từ cộng đồng để biến những ý tưởng tái chế lớn lao thành hiện thực.</p>
+                    </CardContent>
+                </Card>
+                <Card className="hover:shadow-lg transition-shadow">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                        <CardTitle>Đăng bán Sản phẩm</CardTitle>
+                        <Button size="icon" variant="ghost" onClick={() => navigate('/app/creator/add-product')}><Plus className="w-5 h-5" /></Button>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-sm text-gray-600">Đưa những sản phẩm tái chế độc đáo của bạn đến với cộng đồng người dùng bền vững.</p>
+                    </CardContent>
+                </Card>
             </div>
 
-            <Tabs defaultValue="projects">
-                <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="projects">Dự án Kêu gọi vốn</TabsTrigger>
-                    <TabsTrigger value="products">Sản phẩm Tự chủ</TabsTrigger>
-                </TabsList>
-                <TabsContent value="projects" className="mt-4 space-y-3">
-                    <Card>
-                        <CardContent className="p-4 flex justify-between items-center">
-                            <p className="font-semibold">BST Túi Tote Tái chế</p>
-                            <span className="text-xs font-semibold text-green-600 bg-green-100 px-2 py-1 rounded-full">Đã gọi vốn xong</span>
-                        </CardContent>
-                    </Card>
-                     <Card>
-                        <CardContent className="p-4 flex justify-between items-center">
-                            <p className="font-semibold">Áo Khoác Patchwork từ Vải Vụn</p>
-                            <span className="text-xs font-semibold text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full">Đang gọi vốn</span>
-                        </CardContent>
-                    </Card>
-                </TabsContent>
-                <TabsContent value="products" className="mt-4 space-y-3">
-                    <Card>
-                        <CardContent className="p-4 flex justify-between items-center">
-                            <p className="font-semibold">Túi Tote Jeans</p>
-                            <span className="text-sm text-gray-500">Đang bán</span>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardContent className="p-4 flex justify-between items-center">
-                            <p className="font-semibold">Ví Vải Dù</p>
-                            <span className="text-sm text-red-500">Hết hàng</span>
-                        </CardContent>
-                    </Card>
-                </TabsContent>
-            </Tabs>
+            {/* Recent Activity */}
+            <Card>
+                <CardHeader>
+                    <CardTitle>Hoạt động Gần đây</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="space-y-4">
+                        <div className="flex items-center">
+                            <p className="text-sm"><span className="font-semibold">Nhà đầu tư An Nguyễn</span> đã đầu tư vào dự án "Áo Khoác Patchwork".</p>
+                            <span className="text-xs text-gray-500 ml-auto">5 phút trước</span>
+                        </div>
+                        <div className="flex items-center">
+                            <p className="text-sm">Sản phẩm <span className="font-semibold">"Túi Tote Jeans"</span> đã được bán.</p>
+                            <span className="text-xs text-gray-500 ml-auto">2 giờ trước</span>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
     );
 };
