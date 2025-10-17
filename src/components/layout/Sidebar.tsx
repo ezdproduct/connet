@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ROLES_CONFIG } from '../../config/roles';
 import { Icon } from '@/components/Icons';
 
@@ -19,7 +19,9 @@ const Sidebar: React.FC<SidebarProps> = ({ role, activePath }) => {
     return (
         <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
             <div className="px-6 py-5 border-b border-gray-200">
-                <img src="/logo.svg" alt="CÒN NÉT GEN Logo" className="h-10" />
+                <Link to="/">
+                    <img src="/logo.svg" alt="CÒN NÉT GEN Logo" className="h-10" />
+                </Link>
             </div>
             <nav className="flex-1 p-4 space-y-2">
                 {config.nav.map(item => (
