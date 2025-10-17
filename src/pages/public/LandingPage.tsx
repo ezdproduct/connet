@@ -10,6 +10,7 @@ import { CollageSection } from '../../components/landing/CollageSection';
 import { EcosystemSection } from '../../components/landing/EcosystemSection';
 import { BlockchainSection } from '../../components/landing/BlockchainSection';
 import { InvestmentSection } from '../../components/landing/InvestmentSection';
+import { CoCoinSection } from '../../components/landing/CoCoinSection';
 import { FastFashionSection } from '../../components/landing/FastFashionSection';
 import { ProcessSection } from '../../components/landing/ProcessSection';
 import { FullProcessSection } from '../../components/landing/FullProcessSection';
@@ -86,6 +87,7 @@ const LandingPage = () => {
                 <BlockchainSection />
                 <InvestmentSection onRegisterClick={() => handleToggleModal('register')} />
                 <ProcessSection onModalClick={handleToggleModal} />
+                <CoCoinSection />
                 <FullProcessSection />
                 <CommunityStorySection />
                 <JoinUsSection />
