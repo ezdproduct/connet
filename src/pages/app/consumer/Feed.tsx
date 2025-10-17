@@ -11,7 +11,7 @@ const posts = [
         },
         timestamp: '1 giờ trước',
         content: 'Cả nhà ơi, cuối tuần này team CÒN NÉT GEN đã tổ chức một buổi dọn dẹp nhỏ tại công viên gần nhà. Cảm giác thật tuyệt khi góp phần làm cho không gian chung sạch đẹp hơn! 🌳 #dọn_rác #cộng_đồng #sống_xanh',
-        imageUrl: 'https://images.unsplash.com/photo-1618479125211-827f103c385a?q=80&w=800&auto=format&fit=crop',
+        imageUrl: '/park-cleanup.jpeg',
         likes: 45,
         comments: 12,
     },
