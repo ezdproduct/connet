@@ -29,7 +29,7 @@ const ConsumerMarket = () => (
             </aside>
             <div className="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1622470953794-345a7c2f8557?q=80&w=400&auto=format&fit=crop" className="w-full h-48 object-cover"/>
+                    <img src="/linen-shirt.png" alt="Áo Sơ mi Linen" className="w-full h-48 object-cover"/>
                     <div className="p-4">
                         <p className="font-semibold">Áo Sơ mi Linen</p>
                         <p className="text-sm text-gray-500">bởi Trần B</p>
