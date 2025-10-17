@@ -37,7 +37,7 @@ const ConsumerMarket = () => (
                     </div>
                 </div>
                 <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1585497913239-3b84a07a22a2?q=80&w=400&auto=format&fit=crop" className="w-full h-48 object-cover"/>
+                    <img src="/vintage-dress.png" alt="Váy Hoa Vintage" className="w-full h-48 object-cover"/>
                     <div className="p-4">
                         <p className="font-semibold">Váy Hoa Vintage</p>
                         <p className="text-sm text-gray-500">bởi Lê C</p>
