@@ -20,7 +20,7 @@ import CreatorProducts from "@/pages/app/creator/Products.tsx";
 import CreatorProjects from "@/pages/app/creator/Projects.tsx";
 import ConsumerFeed from "@/pages/app/consumer/Feed.tsx";
 import ConsumerMarket from "@/pages/app/consumer/Market.tsx";
-import ConsumerMissions from "@/pages/app/consumer/Missions.tsx";
+import ConsumerChallenges from "@/pages/app/consumer/Challenges.tsx";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +54,7 @@ const App = () => (
             {/* Consumer Routes */}
             <Route path="consumer/feed" element={<ConsumerFeed />} />
             <Route path="consumer/market" element={<ConsumerMarket />} />
-            <Route path="consumer/missions" element={<ConsumerMissions />} />
+            <Route path="consumer/challenges" element={<ConsumerChallenges />} />
           </Route>
 
           {/* Catch-all Route */}
