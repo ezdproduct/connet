@@ -35,7 +35,7 @@ const posts = [
         },
         timestamp: '1 ngày trước',
         content: 'Mẹo nhỏ cuối tuần: Tự làm thùng compost tại nhà từ những vật dụng đơn giản! Biến rác nhà bếp thành phân bón dinh dưỡng cho cây. Ai đã thử chưa? Chia sẻ thành quả nhé! 👇 #compost #tự_làm #vườn_nhà',
-        imageUrl: 'https://images.unsplash.com/photo-1593113646773-5b8617a20463?q=80&w=800&auto=format&fit=crop',
+        imageUrl: '/compost-bin.jpeg',
         likes: 102,
         comments: 31,
     },
