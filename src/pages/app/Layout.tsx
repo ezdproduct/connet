@@ -8,27 +8,31 @@ import { ROLES_CONFIG } from '@/config/roles';
 const AppLayout = () => {
     const location = useLocation();
     
+    // State để lưu vai trò hiện tại của người dùng.
+    // Ưu tiên lấy từ sessionStorage. Nếu không có, xác định từ URL (dành cho trường hợp truy cập trực tiếp).
     const [role, setRole] = useState<keyof typeof ROLES_CONFIG>(() => {
+        const savedRole = sessionStorage.getItem('selectedRole') as keyof typeof ROLES_CONFIG;
+        if (savedRole && ROLES_CONFIG[savedRole]) {
+            return savedRole;
+        }
+        
         if (location.pathname.startsWith('/app/creator')) return 'creator';
         if (location.pathname.startsWith('/app/consumer')) return 'consumer';
-        return 'investor'; // Mặc định là investor
+        return 'investor';
     });
 
+    // Hàm để lấy tiêu đề trang dựa trên đường dẫn URL hiện tại.
     const getTitle = () => {
         const allNavItems = Object.values(ROLES_CONFIG).flatMap(config => (config as any).nav);
         const currentNavItem = allNavItems.find((item: any) => item.path === location.pathname);
         return currentNavItem ? currentNavItem.name : 'Trang chủ';
     };
 
+    // Effect này sẽ lưu vai trò vào sessionStorage mỗi khi nó thay đổi.
+    // Điều này đảm bảo vai trò được duy trì khi người dùng làm mới trang hoặc chuyển vai trò.
     useEffect(() => {
-        if (location.pathname.startsWith('/app/creator') && role !== 'creator') {
-            setRole('creator');
-        } else if (location.pathname.startsWith('/app/consumer') && role !== 'consumer') {
-            setRole('consumer');
-        } else if (location.pathname.startsWith('/app/investor') && role !== 'investor') {
-            setRole('investor');
-        }
-    }, [location.pathname, role]);
+        sessionStorage.setItem('selectedRole', role);
+    }, [role]);
 
     return (
         <div className="flex h-screen bg-white font-sans text-gray-800">

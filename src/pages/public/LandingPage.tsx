@@ -65,13 +65,15 @@ const LandingPage = () => {
             'Nhà Đầu tư': 'investor',
         };
         const roleKey = roleKeyMap[selectedRole] || 'consumer';
-        const targetPath = ROLES_CONFIG[roleKey].nav[0].path;
+        
+        // 2. Lưu vai trò đã chọn vào sessionStorage để AppLayout có thể truy cập
+        sessionStorage.setItem('selectedRole', roleKey);
 
-        // 2. Điều hướng người dùng đến trang quản trị của vai trò đã chọn
-        navigate(targetPath);
+        // 3. Điều hướng người dùng đến trang Bảng tin cộng đồng
+        navigate('/app/consumer/feed');
         toast({ title: "Đăng ký thành công!", description: "Chào mừng bạn đến với CÒN NÉT GEN." });
 
-        // 3. Chuẩn bị dữ liệu và danh sách webhook
+        // 4. Chuẩn bị dữ liệu và danh sách webhook
         const roleValueMap: { [key: string]: string } = {
           'Cộng đồng': 'congdong',
           'Nhà Sáng tạo': 'nhasangtao',
@@ -83,7 +85,7 @@ const LandingPage = () => {
             'https://n8n.probase.tech/webhook-test/lead'
         ];
 
-        // 4. Gửi yêu cầu đến từng webhook trong danh sách ở chế độ nền
+        // 5. Gửi yêu cầu đến từng webhook trong danh sách ở chế độ nền
         webhookUrls.forEach(url => {
             fetch(url, {
                 method: 'POST',
