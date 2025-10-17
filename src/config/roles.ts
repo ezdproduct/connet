@@ -42,7 +42,7 @@ export const ROLES_CONFIG = {
         iconComponent: User, 
         nav: [ 
             { id: 'feed', name: 'Bảng tin', icon: ICONS.feed, path: '/app/consumer/feed' }, 
-            { id: 'market', name: 'Chợ trời', icon: ICONS.marketplace, path: '/app/consumer/market' }, 
+            { id: 'market', name: 'Marketplace', icon: ICONS.marketplace, path: '/app/consumer/market' }, 
             { id: 'missions', name: 'Nhiệm vụ xanh', icon: ICONS.missions, path: '/app/consumer/missions' } 
         ] 
     }
