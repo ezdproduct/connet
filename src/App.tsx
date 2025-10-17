@@ -21,7 +21,8 @@ import CreateProject from "@/pages/app/creator/CreateProject.tsx";
 import SubmissionSuccess from "@/pages/app/creator/SubmissionSuccess.tsx";
 import ConsumerFeed from "@/pages/app/consumer/Feed.tsx";
 import ConsumerMarket from "@/pages/app/consumer/Market.tsx";
-import ConsumerChallenges from "@/pages/app/consumer/Challenges.tsx";
+import ConsumerEarnCoin from "@/pages/app/consumer/EarnCoin.tsx";
+import ConsumerAccount from "@/pages/app/consumer/Account.tsx";
 
 const queryClient = new QueryClient();
 
@@ -56,7 +57,8 @@ const App = () => (
             {/* Consumer Routes */}
             <Route path="consumer/feed" element={<ConsumerFeed />} />
             <Route path="consumer/market" element={<ConsumerMarket />} />
-            <Route path="consumer/challenges" element={<ConsumerChallenges />} />
+            <Route path="consumer/earn-coin" element={<ConsumerEarnCoin />} />
+            <Route path="consumer/account" element={<ConsumerAccount />} />
           </Route>
 
           {/* Catch-all Route */}

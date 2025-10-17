@@ -41,7 +41,8 @@ export const ROLES_CONFIG = {
         nav: [ 
             { id: 'feed', name: 'Bảng tin', icon: ICONS.feed, path: '/app/consumer/feed' }, 
             { id: 'market', name: 'Marketplace', icon: ICONS.marketplace, path: '/app/consumer/market' }, 
-            { id: 'challenges', name: 'Thử thách xanh', icon: ICONS.missions, path: '/app/consumer/challenges' } 
+            { id: 'earn-coin', name: 'Kiếm Cò Coin', icon: ICONS.missions, path: '/app/consumer/earn-coin' },
+            { id: 'account', name: 'Tài khoản', icon: ICONS.wallet, path: '/app/consumer/account' }
         ] 
     }
 };
