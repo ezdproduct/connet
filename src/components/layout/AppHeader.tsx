@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
@@ -25,7 +25,13 @@ const AppHeader: React.FC<AppHeaderProps> = ({ role, setRole, title }) => {
     return (
         <header className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-200 bg-white">
             <div className="flex items-center">
-                <h2 className="text-xl md:text-2xl font-bold text-gray-800">{title}</h2>
+                {/* Hiển thị tiêu đề trên desktop (lg và lớn hơn) */}
+                <h2 className="hidden lg:block text-xl md:text-2xl font-bold text-gray-800">{title}</h2>
+                
+                {/* Hiển thị logo trên mobile (nhỏ hơn lg) và link về trang chủ */}
+                <Link to="/" className="lg:hidden">
+                    <img src="/logo.svg" alt="CÒN NÉT GEN Logo" className="h-10" />
+                </Link>
             </div>
             <div className="flex items-center space-x-2 md:space-x-4">
                 <div className="relative hidden md:block w-80">
