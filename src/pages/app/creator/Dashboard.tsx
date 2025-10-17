@@ -1,8 +1,79 @@
 import React from 'react';
-import ChartComponent from '@/components/Chart';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Plus } from 'lucide-react';
 
-const CreatorDashboard = () => (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8"><div className="lg:col-span-3"><div className="grid grid-cols-1 md:grid-cols-3 gap-6"><div className="bg-white p-6 rounded-xl border shadow-sm"><p className="text-sm text-gray-500">Tổng Doanh thu (Tháng 10)</p><p className="text-3xl font-bold text-orange-600 mt-1">1.250.000 đ</p></div><div className="bg-white p-6 rounded-xl border shadow-sm"><p className="text-sm text-gray-500">Sản phẩm đã bán</p><p className="text-3xl font-bold text-orange-600 mt-1">5</p></div><div className="bg-white p-6 rounded-xl border shadow-sm"><p className="text-sm text-gray-500">Dự án đang gọi vốn</p><p className="text-3xl font-bold text-orange-600 mt-1">1</p></div></div></div><div className="lg:col-span-2 bg-white p-6 rounded-xl border shadow-sm overflow-x-auto"><h3 className="font-bold text-lg mb-4">Hoạt động Gần đây</h3><table className="w-full text-sm text-left min-w-[600px]"><thead className="text-xs text-gray-500 uppercase bg-gray-50"><tr><th scope="col" className="px-6 py-3">Tên</th><th scope="col" className="px-6 py-3">Loại hình</th><th scope="col" className="px-6 py-3">Trạng thái</th><th scope="col" className="px-6 py-3">Doanh thu / Vốn</th></tr></thead><tbody><tr className="border-b"><td className="px-6 py-4 font-semibold">BST Túi Tote Tái chế</td><td className="px-6 py-4 text-blue-600">Dự án</td><td className="px-6 py-4">Đã gọi vốn xong</td><td className="px-6 py-4">10.000.000đ</td></tr><tr className="border-b"><td className="px-6 py-4 font-semibold">Túi Tote Jeans</td><td className="px-6 py-4 text-orange-600">Sản phẩm</td><td className="px-6 py-4">Đang bán</td><td className="px-6 py-4">450.000đ</td></tr><tr><td className="px-6 py-4 font-semibold">Ví Vải Dù</td><td className="px-6 py-4 text-orange-600">Sản phẩm</td><td className="px-6 py-4">Hết hàng</td><td className="px-6 py-4">250.000đ</td></tr></tbody></table></div><div className="lg:col-span-1 space-y-8"><div className="bg-white p-6 rounded-xl border shadow-sm"><h3 className="font-bold text-lg mb-4">Phân tích Doanh thu</h3><div className="h-48"><ChartComponent id="creator-bar" type="bar" data={{ labels: ['T7', 'T8', 'T9', 'T10'], datasets: [{ label: 'Doanh thu', data: [850000, 1100000, 950000, 1250000], backgroundColor: '#FD7E14', borderRadius: 4 }] }} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } }} /></div></div><div className="bg-white p-6 rounded-xl border shadow-sm"><h3 className="font-bold text-lg mb-4">Phản hồi từ Cộng đồng</h3><div className="space-y-3 text-sm"><div className="bg-gray-50 p-3 rounded-lg"><p>"Chiếc túi rất đẹp và chắc chắn! Ủng hộ bạn." - <span className="font-semibold">Bùi Thu Trang</span></p></div><div className="bg-gray-50 p-3 rounded-lg"><p>"Mong chờ BST tiếp theo của bạn." - <span className="font-semibold">Lê Minh</span></p></div></div></div></div></div>
-);
+const CreatorDashboard = () => {
+    const navigate = useNavigate();
+
+    return (
+        <div>
+            <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold">Bảng điều khiển</h2>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 md:gap-6 mb-6">
+                <Card>
+                    <CardContent className="p-4">
+                        <p className="text-sm text-gray-500">Tổng Doanh thu</p>
+                        <p className="text-2xl font-bold text-orange-600">1.250.000 đ</p>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardContent className="p-4">
+                        <p className="text-sm text-gray-500">Sản phẩm đã bán</p>
+                        <p className="text-2xl font-bold">5</p>
+                    </CardContent>
+                </Card>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 md:gap-6 mb-8">
+                <Button onClick={() => navigate('/app/creator/add-product')} className="bg-orange-100 text-orange-600 hover:bg-orange-200 font-semibold w-full">
+                    <Plus className="w-4 h-4 mr-2" /> Thêm Sản phẩm
+                </Button>
+                <Button onClick={() => navigate('/app/creator/create-project')} className="bg-blue-100 text-blue-600 hover:bg-blue-200 font-semibold w-full">
+                    <Plus className="w-4 h-4 mr-2" /> Tạo Dự án
+                </Button>
+            </div>
+
+            <Tabs defaultValue="projects">
+                <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="projects">Dự án Kêu gọi vốn</TabsTrigger>
+                    <TabsTrigger value="products">Sản phẩm Tự chủ</TabsTrigger>
+                </TabsList>
+                <TabsContent value="projects" className="mt-4 space-y-3">
+                    <Card>
+                        <CardContent className="p-4 flex justify-between items-center">
+                            <p className="font-semibold">BST Túi Tote Tái chế</p>
+                            <span className="text-xs font-semibold text-green-600 bg-green-100 px-2 py-1 rounded-full">Đã gọi vốn xong</span>
+                        </CardContent>
+                    </Card>
+                     <Card>
+                        <CardContent className="p-4 flex justify-between items-center">
+                            <p className="font-semibold">Áo Khoác Patchwork từ Vải Vụn</p>
+                            <span className="text-xs font-semibold text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full">Đang gọi vốn</span>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+                <TabsContent value="products" className="mt-4 space-y-3">
+                    <Card>
+                        <CardContent className="p-4 flex justify-between items-center">
+                            <p className="font-semibold">Túi Tote Jeans</p>
+                            <span className="text-sm text-gray-500">Đang bán</span>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardContent className="p-4 flex justify-between items-center">
+                            <p className="font-semibold">Ví Vải Dù</p>
+                            <span className="text-sm text-red-500">Hết hàng</span>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+            </Tabs>
+        </div>
+    );
+};
 
 export default CreatorDashboard;

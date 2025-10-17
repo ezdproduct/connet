@@ -31,9 +31,7 @@ export const ROLES_CONFIG = {
         theme: 'creator', 
         iconComponent: Palette, 
         nav: [ 
-            { id: 'dashboard', name: 'Bảng điều khiển', icon: ICONS.creatorDashboard, path: '/app/creator/dashboard' }, 
-            { id: 'products', name: 'Sản phẩm', icon: ICONS.products, path: '/app/creator/products' }, 
-            { id: 'projects', name: 'Dự án', icon: ICONS.projects, path: '/app/creator/projects' } 
+            { id: 'dashboard', name: 'Bảng điều khiển', icon: ICONS.creatorDashboard, path: '/app/creator/dashboard' },
         ] 
     },
     consumer: { 

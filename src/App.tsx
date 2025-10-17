@@ -16,8 +16,9 @@ import InvestorDashboard from "@/pages/app/investor/Dashboard.tsx";
 import InvestorMarket from "@/pages/app/investor/Market.tsx";
 import InvestorWallet from "@/pages/app/investor/Wallet.tsx";
 import CreatorDashboard from "@/pages/app/creator/Dashboard.tsx";
-import CreatorProducts from "@/pages/app/creator/Products.tsx";
-import CreatorProjects from "@/pages/app/creator/Projects.tsx";
+import AddProduct from "@/pages/app/creator/AddProduct.tsx";
+import CreateProject from "@/pages/app/creator/CreateProject.tsx";
+import SubmissionSuccess from "@/pages/app/creator/SubmissionSuccess.tsx";
 import ConsumerFeed from "@/pages/app/consumer/Feed.tsx";
 import ConsumerMarket from "@/pages/app/consumer/Market.tsx";
 import ConsumerChallenges from "@/pages/app/consumer/Challenges.tsx";
@@ -48,8 +49,9 @@ const App = () => (
 
             {/* Creator Routes */}
             <Route path="creator/dashboard" element={<CreatorDashboard />} />
-            <Route path="creator/products" element={<CreatorProducts />} />
-            <Route path="creator/projects" element={<CreatorProjects />} />
+            <Route path="creator/add-product" element={<AddProduct />} />
+            <Route path="creator/create-project" element={<CreateProject />} />
+            <Route path="creator/submission-success" element={<SubmissionSuccess />} />
 
             {/* Consumer Routes */}
             <Route path="consumer/feed" element={<ConsumerFeed />} />
