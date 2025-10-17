@@ -1,10 +1,13 @@
 import React from 'react';
-import { Badge } from '@/components/ui/badge';
+import { CircleDollarSign } from 'lucide-react';
 
 const TransactionItem = ({ description, amount }: { description: string, amount: number }) => (
     <div className="flex justify-between items-center py-4 border-b">
         <p className="text-gray-700">{description}</p>
-        <p className="font-semibold text-green-600">+{amount} Cò</p>
+        <div className="flex items-center space-x-1 font-semibold text-green-600">
+            <span>+{amount}</span>
+            <CircleDollarSign className="w-4 h-4" />
+        </div>
     </div>
 );
 
@@ -15,7 +18,7 @@ const ConsumerAccount = () => {
             
             <div className="bg-white p-8 rounded-2xl border shadow-sm inline-flex flex-col items-center">
                 <div className="flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
-                    <span className="text-3xl font-bold text-green-600">Cò</span>
+                    <CircleDollarSign className="w-12 h-12 text-green-600" />
                 </div>
                 <p className="text-6xl font-bold text-gray-800">120</p>
                 <p className="text-gray-500 mt-1">Số dư Cò Coin</p>
