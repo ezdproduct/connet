@@ -9,7 +9,7 @@ const projects = [
     {
         title: "Áo khoác từ Vải Dù Tái chế",
         author: "bởi NTK Minh",
-        imageUrl: "https://images.unsplash.com/photo-1591047139829-d919b5ca4d3c?q=80&w=400&auto=format&fit=crop",
+        imageUrl: "/recycled-fabric-jacket.jpeg",
         raised: 45000000,
         goal: 100000000,
     },
