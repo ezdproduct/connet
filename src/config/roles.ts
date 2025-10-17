@@ -23,7 +23,8 @@ export const ROLES_CONFIG = {
         nav: [ 
             { id: 'dashboard', name: 'Dashboard', icon: ICONS.dashboard, path: '/app/investor/dashboard' }, 
             { id: 'market', name: 'Thị trường', icon: ICONS.market, path: '/app/investor/market' }, 
-            { id: 'wallet', name: 'Ví đầu tư', icon: ICONS.wallet, path: '/app/investor/wallet' } 
+            { id: 'wallet', name: 'Ví đầu tư', icon: ICONS.wallet, path: '/app/investor/wallet' },
+            { id: 'feed', name: 'Bảng tin', icon: ICONS.feed, path: '/app/consumer/feed' }
         ] 
     },
     creator: { 
@@ -34,7 +35,8 @@ export const ROLES_CONFIG = {
             { id: 'dashboard', name: 'Bảng điều khiển', icon: ICONS.creatorDashboard, path: '/app/creator/dashboard' },
             { id: 'products', name: 'Sản phẩm', icon: ICONS.products, path: '/app/creator/products' },
             { id: 'projects', name: 'Dự án', icon: ICONS.projects, path: '/app/creator/projects' },
-            { id: 'wallet', name: 'Ví & Doanh thu', icon: ICONS.wallet, path: '/app/creator/wallet' }
+            { id: 'wallet', name: 'Ví & Doanh thu', icon: ICONS.wallet, path: '/app/creator/wallet' },
+            { id: 'feed', name: 'Bảng tin', icon: ICONS.feed, path: '/app/consumer/feed' }
         ] 
     },
     consumer: { 

@@ -7,7 +7,7 @@ const posts = [
         id: 1,
         author: {
             name: 'CÒN NÉT GEN Team',
-            avatarUrl: 'https://images.unsplash.com/photo-1529156069898-49953e-39b3ac?q=80&w=100&auto=format&fit=crop',
+            avatarUrl: '/logo.svg',
         },
         timestamp: '1 giờ trước',
         content: 'Cả nhà ơi, cuối tuần này team CÒN NÉT GEN đã tổ chức một buổi dọn dẹp nhỏ tại công viên gần nhà. Cảm giác thật tuyệt khi góp phần làm cho không gian chung sạch đẹp hơn! 🌳 #dọn_rác #cộng_đồng #sống_xanh',
@@ -61,7 +61,7 @@ const ConsumerFeed = () => (
                 <div key={post.id} className="bg-white rounded-xl border shadow-sm">
                     <div className="p-5">
                         <div className="flex items-center mb-3">
-                            <img src={post.author.avatarUrl} alt={`${post.author.name} Avatar`} className="w-10 h-10 rounded-full object-cover"/>
+                            <img src={post.author.avatarUrl} alt={`${post.author.name} Avatar`} className="w-10 h-10 rounded-full object-contain"/>
                             <div className="ml-3">
                                 <p className="font-semibold text-sm">{post.author.name}</p>
                                 <p className="text-xs text-gray-500">{post.timestamp}</p>
