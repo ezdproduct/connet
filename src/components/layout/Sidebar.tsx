@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = ({ role, activePath }) => {
             </nav>
             <div className="p-4 border-t border-gray-200">
                 <div className="flex items-center">
-                    <img src="https://placehold.co/40x40/007BFF/FFFFFF?text=A" alt="Avatar" className="rounded-full"/>
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&auto=format&fit=crop" alt="Avatar" className="w-10 h-10 rounded-full object-cover"/>
                     <div className="ml-3">
                         <p className="font-semibold text-sm">Nguyễn Văn An</p>
                         <p className="text-xs text-gray-500">{config.roleName}</p>
