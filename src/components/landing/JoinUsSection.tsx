@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export const JoinUsSection = () => {
     const [phone, setPhone] = useState('');
-    const [role, setRole] = useState('');
+    const [selectedRole, setSelectedRole] = useState('Cộng đồng');
     const { toast } = useToast();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Sending data as a single JSON object
+        const roleValueMap: { [key: string]: string } = {
+          'Cộng đồng': 'congdong',
+          'Nhà Sáng tạo': 'nhasangtao',
+          'Nhà Đầu tư': 'nhadautu',
+        };
+        
         const data = {
             phone: phone,
-            role: role,
+            role: roleValueMap[selectedRole] || 'khac',
         };
 
         try {
@@ -30,7 +37,7 @@ export const JoinUsSection = () => {
                     description: "Thông tin của bạn đã được gửi đi.",
                 });
                 setPhone('');
-                setRole('');
+                setSelectedRole('Cộng đồng');
             } else {
                 throw new Error('Network response was not ok');
             }
@@ -59,16 +66,17 @@ export const JoinUsSection = () => {
                         </div>
                     </div>
                     <div id="doanhnghiep" className="bg-white p-8 rounded-lg animate-on-scroll delay-2 custom-shadow">
-                        <h3 className="text-2xl font-barlow font-bold text-[var(--color-primary)]">BẠN LÀ DOANH NGHIỆP HAY NHÀ ĐẦU TƯ?</h3>
+                        <h3 className="text-2xl font-barlow font-bold text-[var(--color-primary)]">BẠN LÀ DOANH NGHIỆP, NHÀ SÁNG TẠO HAY NHÀ ĐẦU TƯ?</h3>
                         <p className="mt-2 text-[var(--color-secondary)]">Hãy cùng chúng tôi lan tỏa sứ mệnh bền vững. Điền thông tin để nhận tư vấn hợp tác.</p>
-                        <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+                        
+                        <div className="my-6 flex flex-wrap justify-center gap-2">
+                            <Button onClick={() => setSelectedRole('Cộng đồng')} className={cn('transition-all', selectedRole === 'Cộng đồng' ? 'bg-[var(--color-primary)] text-white' : 'bg-white text-[var(--color-primary)] border border-[var(--color-primary)]')}>Cộng đồng</Button>
+                            <Button onClick={() => setSelectedRole('Nhà Sáng tạo')} className={cn('transition-all', selectedRole === 'Nhà Sáng tạo' ? 'bg-[var(--color-primary)] text-white' : 'bg-white text-[var(--color-primary)] border border-[var(--color-primary)]')}>Nhà Sáng tạo</Button>
+                            <Button onClick={() => setSelectedRole('Nhà Đầu tư')} className={cn('transition-all', selectedRole === 'Nhà Đầu tư' ? 'bg-[var(--color-primary)] text-white' : 'bg-white text-[var(--color-primary)] border border-[var(--color-primary)]')}>Nhà Đầu tư</Button>
+                        </div>
+
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <input type="tel" placeholder="Số điện thoại" value={phone} onChange={(e) => setPhone(e.target.value)} required className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none" />
-                            <select value={role} onChange={(e) => setRole(e.target.value)} required className="w-full p-3 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent outline-none">
-                                <option value="">Bạn là...</option>
-                                <option value="nhasangtao">Nhà Sáng Tạo / Doanh Nghiệp</option>
-                                <option value="nhadautu">Nhà Đầu Tư</option>
-                                <option value="doitac">Đối Tác Tiềm Năng</option>
-                            </select>
                             <button type="submit" className="w-full bg-[var(--color-primary)] text-white font-bold py-3 rounded-full hover:bg-primary-hover transition-colors">GỬI YÊU CẦU</button>
                         </form>
                     </div>
