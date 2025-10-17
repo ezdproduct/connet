@@ -136,6 +136,12 @@
   .sidebar-link.active-creator svg { @apply text-[#FD7E14]; }
   .sidebar-link.active-consumer { @apply bg-[#E8F5E9] text-[#198754] font-semibold; }
   .sidebar-link.active-consumer svg { @apply text-[#198754]; }
+
+  /* Bottom Navbar Styles */
+  .bottom-nav-active-investor { @apply text-[#007BFF]; }
+  .bottom-nav-active-creator { @apply text-[#FD7E14]; }
+  .bottom-nav-active-consumer { @apply text-[#198754]; }
+
   .sub-view { animation: fadeIn 0.5s ease-in-out; }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }

@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import { Search, Bell, ChevronDown, LayoutGrid } from 'lucide-react';
+import { Search, Bell, ChevronDown } from 'lucide-react';
 import { ROLES_CONFIG } from '../../config/roles';
-import MobileSidebar from './MobileSidebar';
 
 interface AppHeaderProps {
     role: keyof typeof ROLES_CONFIG;
@@ -26,8 +25,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ role, setRole, title }) => {
     return (
         <header className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-200 bg-white">
             <div className="flex items-center">
-                <MobileSidebar role={role} activePath={location.pathname} />
-                <h2 className="text-xl md:text-2xl font-bold text-gray-800 ml-2 md:ml-0">{title}</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800">{title}</h2>
             </div>
             <div className="flex items-center space-x-2 md:space-x-4">
                 <div className="relative hidden md:block w-80">
