@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ChartComponent from '@/components/Chart';
 
 // Component Icon để render SVG
@@ -27,9 +27,6 @@ const ICONS = {
 };
 
 const InvestorDashboard = () => {
-    const [pricePeriod, setPricePeriod] = useState('24h');
-    const priceData = { '24h': { labels: ['0h', '4h', '8h', '12h', '16h', '20h', '24h'], data: [9750, 9800, 9700, 9850, 9900, 9950, 10000] }, '7d': { labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'], data: [9200, 9350, 9300, 9500, 9700, 9800, 10000] }, '30d': { labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'], data: [8500, 8800, 9200, 10000] } };
-    
     return (
         <div>
             {/* --- Dấu ấn Bền vững Section --- */}
@@ -70,17 +67,6 @@ const InvestorDashboard = () => {
                             <div className="w-40 h-40 mt-4 md:mt-0">
                                 <ChartComponent id="investor-doughnut" type="doughnut" data={{ labels: ['Chứng chỉ xanh đang Stake', 'Chứng chỉ xanh có sẵn'], datasets: [{ data: [3500, 1500], backgroundColor: ['#007BFF', '#28A745'], borderWidth: 0, hoverOffset: 4 }] }} options={{ responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { display: true, position: 'bottom', labels: { boxWidth: 12, padding: 15, font: { size: 10 } } } } }} />
                             </div>
-                        </div>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl shadow-sm border">
-                        <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-                            <h3 className="font-bold text-lg mb-2 md:mb-0">Theo dõi Thị trường (Giá Chứng chỉ xanh)</h3>
-                            <div className="flex justify-center space-x-1">
-                                {['24h', '7d', '30d'].map(period => (<button key={period} onClick={() => setPricePeriod(period)} className={`text-xs px-3 py-1 rounded-full ${pricePeriod === period ? 'bg-blue-100 text-blue-700 font-semibold' : 'bg-gray-100 text-gray-600'}`}>{period}</button>))}
-                            </div>
-                        </div>
-                        <div className="h-64">
-                            <ChartComponent id="investor-line" type="line" data={{ labels: priceData[pricePeriod].labels, datasets: [{ label: 'Giá Chứng chỉ xanh', data: priceData[pricePeriod].data, borderColor: '#007BFF', backgroundColor: 'rgba(0, 123, 255, 0.1)', fill: true, tension: 0.4, pointRadius: 0 }] }} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#F3F4F6' } } } }} />
                         </div>
                     </div>
                 </div>
