@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../../components/layout/Sidebar';
-import AppHeader from '../../components/layout/AppHeader';
-import { ROLES_CONFIG } from '../../config/roles';
+import Sidebar from '@/components/layout/Sidebar';
+import AppHeader from '@/components/layout/AppHeader';
+import MobileSidebar from '@/components/layout/MobileSidebar';
+import { ROLES_CONFIG } from '@/config/roles';
 
 const AppLayout = () => {
     const location = useLocation();
@@ -31,14 +32,14 @@ const AppLayout = () => {
     return (
         <div className="flex h-screen bg-white font-sans text-gray-800">
             <Sidebar role={role} activePath={location.pathname} />
-            <main className="flex-1 flex flex-col overflow-hidden">
+            <div className="flex-1 flex flex-col overflow-hidden">
                 <AppHeader role={role} setRole={setRole} title={getTitle()} />
-                <div className="flex-1 overflow-y-auto p-8 bg-gray-50">
+                <main className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
                     <div className="sub-view">
                        <Outlet />
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     );
 };

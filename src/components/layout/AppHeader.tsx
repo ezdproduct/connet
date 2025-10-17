@@ -5,6 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Input } from '@/components/ui/input';
 import { Search, Bell, ChevronDown, LayoutGrid } from 'lucide-react';
 import { ROLES_CONFIG } from '../../config/roles';
+import MobileSidebar from './MobileSidebar';
 
 interface AppHeaderProps {
     role: keyof typeof ROLES_CONFIG;
@@ -23,12 +24,13 @@ const AppHeader: React.FC<AppHeaderProps> = ({ role, setRole, title }) => {
     };
 
     return (
-        <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200 bg-white">
-            <div>
-                <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
+        <header className="flex items-center justify-between px-4 md:px-8 py-4 border-b border-gray-200 bg-white">
+            <div className="flex items-center">
+                <MobileSidebar role={role} activePath={location.pathname} />
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 ml-2 md:ml-0">{title}</h2>
             </div>
-            <div className="flex items-center space-x-4">
-                <div className="relative w-80">
+            <div className="flex items-center space-x-2 md:space-x-4">
+                <div className="relative hidden md:block w-80">
                     <Input 
                         type="text" 
                         placeholder="Tìm kiếm dự án..." 
@@ -40,18 +42,15 @@ const AppHeader: React.FC<AppHeaderProps> = ({ role, setRole, title }) => {
                     <Bell className="w-6 h-6 text-gray-500" />
                     <span className="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span>
                 </Button>
-                <Button variant="ghost" size="icon" className="h-10 w-10 rounded-full hover:bg-gray-100">
-                    <LayoutGrid className="w-6 h-6 text-gray-500" />
-                </Button>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button 
                             variant="outline" 
-                            className="h-10 px-4 rounded-xl font-semibold text-sm bg-gray-100 border-gray-200 hover:bg-gray-200 transition-colors"
+                            className="h-10 px-2 md:px-4 rounded-xl font-semibold text-sm bg-gray-100 border-gray-200 hover:bg-gray-200 transition-colors"
                         >
-                            <RoleIcon className={`w-5 h-5 mr-2 text-gray-700`} />
-                            <span className="text-gray-800">{currentRoleConfig.roleName}</span>
-                            <ChevronDown className="w-4 h-4 ml-2 text-gray-500" />
+                            <RoleIcon className={`w-5 h-5 md:mr-2 text-gray-700`} />
+                            <span className="hidden md:inline text-gray-800">{currentRoleConfig.roleName}</span>
+                            <ChevronDown className="w-4 h-4 md:ml-2 text-gray-500" />
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-52">

@@ -7,7 +7,7 @@ const posts = [
         id: 1,
         author: {
             name: 'CÒN NÉT GEN Team',
-            avatarUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=100&auto=format&fit=crop',
+            avatarUrl: 'https://images.unsplash.com/photo-1529156069898-49953e-39b3ac?q=80&w=100&auto=format&fit=crop',
         },
         timestamp: '1 giờ trước',
         content: 'Cả nhà ơi, cuối tuần này team CÒN NÉT GEN đã tổ chức một buổi dọn dẹp nhỏ tại công viên gần nhà. Cảm giác thật tuyệt khi góp phần làm cho không gian chung sạch đẹp hơn! 🌳 #dọn_rác #cộng_đồng #sống_xanh',
@@ -42,8 +42,8 @@ const posts = [
 ];
 
 const ConsumerFeed = () => (
-    <div className="grid grid-cols-3 gap-8">
-        <div className="col-span-2 space-y-6">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 space-y-6">
             {/* Create Post Box */}
             <div className="bg-white p-5 rounded-xl border shadow-sm">
                 <div className="flex items-start">
@@ -79,7 +79,7 @@ const ConsumerFeed = () => (
         </div>
 
         {/* Right Sidebar */}
-        <div className="col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-6">
             <div className="bg-white p-6 rounded-xl border shadow-sm">
                 <h3 className="font-bold text-lg mb-4">Thử thách Xanh</h3>
                 <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">

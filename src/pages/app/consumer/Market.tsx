@@ -1,7 +1,52 @@
 import React from 'react';
 
 const ConsumerMarket = () => (
-    <div><div className="flex justify-between items-center mb-6"><div><h3 className="text-2xl font-bold">Marketplace</h3><p className="text-sm text-gray-500">Mua bán, trao đổi các sản phẩm thời trang bền vững.</p></div><button className="bg-green-600 text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-green-700 transition">Đăng bán sản phẩm</button></div><div className="flex gap-8"><aside className="w-1/4 bg-white p-6 rounded-xl border shadow-sm h-fit"><h4 className="font-bold mb-4">Bộ lọc</h4><div className="space-y-4"><div><label className="text-sm font-semibold">Danh mục</label><select className="w-full mt-1 p-2 border border-gray-200 rounded-md text-sm"><option>Tất cả</option></select></div><div><label className="text-sm font-semibold">Khoảng giá</label><input type="range" className="w-full mt-2"/></div><div><label className="text-sm font-semibold">Sắp xếp</label><select className="w-full mt-1 p-2 border border-gray-200 rounded-md text-sm"><option>Mới nhất</option></select></div></div></aside><div className="w-3/4 grid grid-cols-3 gap-6"><div className="bg-white rounded-xl border shadow-sm overflow-hidden"><img src="https://images.unsplash.com/photo-1622470953794-345a7c2f8557?q=80&w=400&auto=format&fit=crop" className="w-full h-48 object-cover"/><div className="p-4"><p className="font-semibold">Áo Sơ mi Linen</p><p className="text-sm text-gray-500">bởi Trần B</p><p className="font-bold text-lg mt-2 text-green-700">150.000 đ</p></div></div><div className="bg-white rounded-xl border shadow-sm overflow-hidden"><img src="https://images.unsplash.com/photo-1585497913239-3b84a07a22a2?q=80&w=400&auto=format&fit=crop" className="w-full h-48 object-cover"/><div className="p-4"><p className="font-semibold">Váy Hoa Vintage</p><p className="text-sm text-gray-500">bởi Lê C</p><p className="font-bold text-lg mt-2 text-green-700">220.000 đ</p></div></div></div></div></div>
+    <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+            <div>
+                <h3 className="text-2xl font-bold">Marketplace</h3>
+                <p className="text-sm text-gray-500">Mua bán, trao đổi các sản phẩm thời trang bền vững.</p>
+            </div>
+            <button className="mt-4 md:mt-0 bg-green-600 text-white font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-green-700 transition w-full md:w-auto">Đăng bán sản phẩm</button>
+        </div>
+        <div className="flex flex-col lg:flex-row gap-8">
+            <aside className="w-full lg:w-1/4 bg-white p-6 rounded-xl border shadow-sm h-fit">
+                <h4 className="font-bold mb-4">Bộ lọc</h4>
+                <div className="space-y-4">
+                    <div>
+                        <label className="text-sm font-semibold">Danh mục</label>
+                        <select className="w-full mt-1 p-2 border border-gray-200 rounded-md text-sm"><option>Tất cả</option></select>
+                    </div>
+                    <div>
+                        <label className="text-sm font-semibold">Khoảng giá</label>
+                        <input type="range" className="w-full mt-2"/>
+                    </div>
+                    <div>
+                        <label className="text-sm font-semibold">Sắp xếp</label>
+                        <select className="w-full mt-1 p-2 border border-gray-200 rounded-md text-sm"><option>Mới nhất</option></select>
+                    </div>
+                </div>
+            </aside>
+            <div className="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1622470953794-345a7c2f8557?q=80&w=400&auto=format&fit=crop" className="w-full h-48 object-cover"/>
+                    <div className="p-4">
+                        <p className="font-semibold">Áo Sơ mi Linen</p>
+                        <p className="text-sm text-gray-500">bởi Trần B</p>
+                        <p className="font-bold text-lg mt-2 text-green-700">150.000 đ</p>
+                    </div>
+                </div>
+                <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1585497913239-3b84a07a22a2?q=80&w=400&auto=format&fit=crop" className="w-full h-48 object-cover"/>
+                    <div className="p-4">
+                        <p className="font-semibold">Váy Hoa Vintage</p>
+                        <p className="text-sm text-gray-500">bởi Lê C</p>
+                        <p className="font-bold text-lg mt-2 text-green-700">220.000 đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 );
 
 export default ConsumerMarket;
