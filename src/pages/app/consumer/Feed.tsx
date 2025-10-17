@@ -91,7 +91,7 @@ const ConsumerFeed = () => (
             <div className="bg-white p-6 rounded-xl border shadow-sm">
                 <h3 className="font-bold text-lg mb-4">Sản phẩm nổi bật</h3>
                 <div className="flex items-center space-x-4">
-                    <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=200&auto=format&fit=crop" className="w-20 h-20 rounded-md object-cover"/>
+                    <img src="/tote-bag.png" className="w-20 h-20 rounded-md object-cover"/>
                     <div>
                         <p className="font-semibold text-sm">Túi Tote từ Jeans cũ</p>
                         <p className="text-xs text-gray-500">bởi NTK An An</p>
